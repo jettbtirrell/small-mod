@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "smallmod",
+	"version": "${version}",
+	"name": "Small Mod",
+	"description": "A small Fabric mod.",
+	"authors": [
+		"jettbtirrell"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/smallmod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.smallmod.SmallMod"
+		],
+		"client": [
+			"com.smallmod.client.SmallModClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
