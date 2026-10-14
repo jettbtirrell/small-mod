@@ -86,7 +86,7 @@ public class BlubModel extends EntityModel<LivingEntityRenderState> {
         body.yScale = 1.0F - 0.03F * squish; //body 3% less height if 0.03F * squish
 
 		//waddle
-		body.zRot = -Mth.cos(phase) * 0.0405F * strength;
+		body.zRot = Mth.cos(phase) * 0.0355F * strength;
 
 		//body not coming off feet when waddling
 		body.y += 5.0F * body.xScale * Mth.abs(Mth.sin(body.zRot));
@@ -94,7 +94,7 @@ public class BlubModel extends EntityModel<LivingEntityRenderState> {
 		//ears waddle in addition to body waddle
 		left_ear.zRot = right_ear.zRot = body.zRot * 1.5F;
 
-		//ears dont come off boady when waddling
+		//ears dont come off body when waddling
         left_ear.y  += 1.5F * Mth.abs(Mth.sin(left_ear.zRot));
         right_ear.y += 1.5F * Mth.abs(Mth.sin(right_ear.zRot));
 	}
