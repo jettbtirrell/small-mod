@@ -8,3 +8,5 @@ A Fabric mod for Minecraft 26.3.
 ```
 
 Requires JDK 25.
+
+note to self: run ./gradlew genSources to get the mc-sources folder populated
