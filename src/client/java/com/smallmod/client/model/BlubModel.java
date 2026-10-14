@@ -79,6 +79,24 @@ public class BlubModel extends EntityModel<LivingEntityRenderState> {
 		for (ModelPart leg : new ModelPart[] {back_left_leg, back_right_leg, front_left_leg, front_right_leg}) {
 			leg.y -= Mth.abs(Mth.sin(leg.xRot));
 		}
+		//squish
+		float squish = 0.5F * (1.0F - Mth.cos(2.0F * phase)) * strength;
+		body.xScale = 1.0F + 0.05F * squish; //body 5% wider if 0.05F * squish
+        legs.xScale = body.xScale; //keeps the legs aligned with body that grows on x axis
+        body.yScale = 1.0F - 0.03F * squish; //body 3% less height if 0.03F * squish
+
+		//waddle
+		body.zRot = -Mth.cos(phase) * 0.0405F * strength;
+
+		//body not coming off feet when waddling
+		body.y += 5.0F * body.xScale * Mth.abs(Mth.sin(body.zRot));
+
+		//ears waddle in addition to body waddle
+		left_ear.zRot = right_ear.zRot = body.zRot * 1.5F;
+
+		//ears dont come off boady when waddling
+        left_ear.y  += 1.5F * Mth.abs(Mth.sin(left_ear.zRot));
+        right_ear.y += 1.5F * Mth.abs(Mth.sin(right_ear.zRot));
 	}
 
 
