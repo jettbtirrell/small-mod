@@ -15,6 +15,7 @@ public class SmallMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Small Mod loaded!");
+		ModEntities.register();
 	}
 
 	public static Identifier id(String path) {
