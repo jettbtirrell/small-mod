@@ -1,6 +1,7 @@
 package com.smallmod.client.model;
 
 import com.smallmod.SmallMod;
+import com.smallmod.client.render.BlubRenderState;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -10,10 +11,9 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
 
-public class BlubModel extends EntityModel<LivingEntityRenderState> {
+public class BlubModel extends EntityModel<BlubRenderState> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(SmallMod.id("blub"), "main");
 	private final ModelPart body;
 	private final ModelPart legs;
@@ -62,8 +62,19 @@ public class BlubModel extends EntityModel<LivingEntityRenderState> {
 	}
 
 	@Override
-    public void setupAnim(LivingEntityRenderState state) {
+    public void setupAnim(BlubRenderState state) {
         super.setupAnim(state);
+
+		if (state.isSitting) {
+			body.y += 2.0F;
+			back_left_leg.xRot = back_right_leg.xRot = Mth.HALF_PI;
+			front_left_leg.xRot = front_right_leg.xRot = -Mth.HALF_PI;
+			back_left_leg.z += 1.0F;  back_right_leg.z += 1.0F;
+			front_left_leg.z -= 1.0F; front_right_leg.z -= 1.0F;
+			legs.y += 1.0F;
+			return;
+		}
+
 		float phase = state.walkAnimationPos * 0.6662F;
         float strength = state.walkAnimationSpeed;
 
