@@ -64,11 +64,11 @@ public class BlubModel extends EntityModel<LivingEntityRenderState> {
 	@Override
     public void setupAnim(LivingEntityRenderState state) {
         super.setupAnim(state);
-		float phase = state.walkAnimationPos * 0.4442F;
+		float phase = state.walkAnimationPos * 0.6662F;
         float strength = state.walkAnimationSpeed;
 
-		float swing = Mth.cos(phase) * 0.5F * strength;
-        float swingBack = Mth.cos(phase + Mth.PI) * 0.5F * strength;
+		float swing = Mth.cos(phase) * 0.7F * strength;
+        float swingBack = Mth.cos(phase + Mth.PI) * 0.7F * strength;
         back_right_leg.xRot  = swing;
         back_left_leg.xRot   = swingBack;
         front_right_leg.xRot = swingBack;

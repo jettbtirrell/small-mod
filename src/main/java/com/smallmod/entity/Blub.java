@@ -37,7 +37,7 @@ public class Blub extends TamableAnimal {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-		return Animal.createAnimalAttributes().add(Attributes.MOVEMENT_SPEED, 0.2F).add(Attributes.MAX_HEALTH, 8.0).add(Attributes.ATTACK_DAMAGE, 2.0);
+		return Animal.createAnimalAttributes().add(Attributes.MOVEMENT_SPEED, 0.25F).add(Attributes.MAX_HEALTH, 8.0).add(Attributes.ATTACK_DAMAGE, 2.0);
 	}
 
     @Override
