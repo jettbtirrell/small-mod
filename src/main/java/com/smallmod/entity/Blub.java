@@ -5,6 +5,7 @@ import org.jspecify.annotations.Nullable;
 import com.smallmod.ModItemTags;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -26,6 +27,8 @@ import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ProjectileDeflection;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -39,6 +42,11 @@ public class Blub extends TamableAnimal {
     public static AttributeSupplier.Builder createAttributes() {
 		return Animal.createAnimalAttributes().add(Attributes.MOVEMENT_SPEED, 0.25F).add(Attributes.MAX_HEALTH, 8.0).add(Attributes.ATTACK_DAMAGE, 2.0);
 	}
+
+    private static final ProjectileDeflection BLUB_DEFLECTION = (projectile, entity, random, power) -> {
+        entity.level().playSound(null, entity, SoundEvents.SLIME_BLOCK_HIT, entity.getSoundSource(), 1.0F, 1.0F);
+        ProjectileDeflection.REVERSE.deflect(projectile, entity, random, power);
+    };
 
     @Override
 	public boolean isFood(final ItemStack itemStack) {
@@ -125,5 +133,10 @@ public class Blub extends TamableAnimal {
 			this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(8.0);
 		}
 	}
+
+    @Override
+    public ProjectileDeflection deflection(final Projectile projectile) {
+        return BLUB_DEFLECTION;
+    }
 
 }
