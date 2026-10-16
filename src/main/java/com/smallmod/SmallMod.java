@@ -16,6 +16,8 @@ public class SmallMod implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Small Mod loaded!");
 		ModEntities.register();
+		ModAttachments.register();
+		VexTaming.register();
 	}
 
 	public static Identifier id(String path) {

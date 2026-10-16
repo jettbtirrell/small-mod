@@ -1,0 +1,13 @@
+{
+    "required": true,
+    "package": "com.smallmod.mixin",
+    "compatibilityLevel": "JAVA_25",
+    "mixins": [
+        "VexAccessor",
+        "MobAccessor",
+        "MobCanAttackMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}
