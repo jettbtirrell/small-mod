@@ -16,6 +16,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.entity.EquipmentSlot;
 
 
 public class VexTaming {
@@ -33,6 +34,7 @@ public class VexTaming {
             stack.consume(1, player);
             vex.setTarget(null);
             vex.setAttached(ModAttachments.TAMED_VEX, true);
+            vex.setDropChance(EquipmentSlot.MAINHAND, 1.0F);
             ((VexAccessor) vex).smallmod$setHasLimitedLife(false);
             ((VexAccessor) vex).smallmod$setOwner(EntityReference.<LivingEntity>of(player));
             applyTamedAi(vex);
